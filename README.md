@@ -28,5 +28,5 @@ Your missions:
 1. Visualize the object clearly, like in the console or vue dev-tools
 2. Allow edition of property values (bonus: avoid mutating the props directly!)
 3. Allow edition of property names
-
+4. Send btn : display in the console.log
 Timing: 1h
