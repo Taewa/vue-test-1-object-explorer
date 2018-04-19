@@ -1,9 +1,9 @@
 <template>
     <div id="app">
-        <img src="./assets/logo.png">
-        <h1>Toucan Object explorer</h1>
-        <h2>Test by Taehwa Kim</h2>
-
+        <!--<img src="./assets/logo.png">-->
+        <!--<h1>Toucan Object explorer</h1>-->
+        <!--<h2>Test by Taehwa Kim</h2>-->
+        <!--<h1>{{c}}</h1>-->
         <section class="tree-area">
             <tree :treeData="treeData"></tree>
 
@@ -17,32 +17,33 @@
 
 <script>
     import Tree from './Tree.vue';
-
+    import {mapState} from 'Vuex';
 
     export default {
         name: 'app',
         components: {
             Tree
         },
-        computed: {
-            counter: function() {
-                return this.$store.state.counter
-            },
-            treeData: function() {
-                return this.$store.state.obj
-            }
-        },
+//        computed: {
+//            treeData: function() {
+//                return this.$store.state.obj
+//            },
+//        },
+
+        computed: mapState({
+            treeData: 'obj'
+        }),
         data () {
             return {
-                obj: {
-                    super: {
-                        prop: {
-                            nested: 'reall'
-                        },
-                        other: 'hey'
-                    },
-                    stuff: 'yeah'
-                }
+//                obj: {
+//                    super: {
+//                        prop: {
+//                            nested: 'reall'
+//                        },
+//                        other: 'hey'
+//                    },
+//                    stuff: 'yeah'
+//                }
             }
         },
         methods : {

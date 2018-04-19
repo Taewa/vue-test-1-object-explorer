@@ -6,6 +6,7 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
+        c: 0,
         obj: {
             super: {
                 prop: {
@@ -15,6 +16,21 @@ export const store = new Vuex.Store({
             },
             stuff: 'yeah',
             ha: 'ho'
+        }
+    },
+    mutations: {
+        //https://narusas.github.io/2018/03/19/normalized-data-with-vuex.htmlhttps://narusas.github.io/2018/03/19/normalized-data-with-vuex.html
+        moka (state) {
+            // mutate state
+            // state.obj.ha = 'wow';
+            console.log('state!!!', state);
+            state.c++;
+            Vue.set(state.obj.super, 'other', 'wooooooow');
+            Vue.delete(state.obj, 'stuff');
+
+            // var a = Vue.get(state.obj.super);
+            console.log('state.obj.super', state.obj.super);
+
         }
     }
 });

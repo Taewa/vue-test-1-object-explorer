@@ -1,12 +1,13 @@
 <template>
     <section id="tree">
-        <div v-for="(val, key) in internalData">
+        <!--<div v-for="(val, key) in internalData">-->
+        <div v-for="(val, key) in treeData">
             <!--In case val is an object-->
             <template v-if="isObject(val)">
                 <div class="object-tree-area">
                     <span class="key">
                         <!--{{key}}-->
-                        <editable :editableData="key" v-on:updateVal="updateKey($event, treeData)"></editable>:
+                        <editable :editableData="key" v-on:updateVal="updateKey($event, treeData, key, val)"></editable>:
                     </span>
                     <tree :treeData="val"></tree>
                 </div>
@@ -17,7 +18,8 @@
                 <div class="key-val-area">
                     <!--<span class="key">{{key}}: </span>-->
                     <span class="key">
-                        <editable :editableData="key" v-on:updateVal="updateKey($event, treeData)"></editable>:
+                        <!--<editable :editableData="key" v-on:updateVal="updateKey($event, treeData)"></editable>:-->
+                        <editable :editableData="key" v-on:updateVal="updateKey($event, treeData, key, val)"></editable>:
                     </span>
 
                     <editable :editableData="val" v-on:updateVal="updateVal($event, treeData, key)"></editable>
@@ -58,7 +60,6 @@
             Editable
         },
         created(){
-            console.log('Tree.vue', this);
         },
         computed: {},
         data () {
@@ -95,10 +96,13 @@
                 console.log('store???', this.$store);
 //                this.treeData = Object.assign({},res);
 //                delete obj[oldKey];
+                this.$store.commit('moka');
 
                 this.$forceUpdate();
 
             },
+
+
 
             updateVal: function (vals, obj, key) {
                 obj[key] = vals.newVal;
@@ -124,7 +128,8 @@
                 }, {});
 
                 return newObj;
-            }
+            },
+
         }
     }
 
