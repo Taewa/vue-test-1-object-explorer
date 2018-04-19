@@ -33,7 +33,7 @@
             return {
                 valEdit: false,
                 storedVal: null,
-                internalEditable: this.editableData + ''
+                internalEditable: this.editableData
             }
         },
 
