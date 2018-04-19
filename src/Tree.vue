@@ -57,6 +57,9 @@
         components: {
             Editable
         },
+        created(){
+            console.log('Tree.vue', this);
+        },
         computed: {},
         data () {
             return {

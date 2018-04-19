@@ -5,7 +5,7 @@
         <h2>Test by Taehwa Kim</h2>
 
         <section class="tree-area">
-            <tree :treeData="obj"></tree>
+            <tree :treeData="treeData"></tree>
 
             <button type="button" class="btn-send" v-on:click="submit();">Send</button>
         </section>
@@ -16,12 +16,21 @@
 </template>
 
 <script>
-    import Tree from './Tree.vue'
+    import Tree from './Tree.vue';
+
 
     export default {
         name: 'app',
         components: {
             Tree
+        },
+        computed: {
+            counter: function() {
+                return this.$store.state.counter
+            },
+            treeData: function() {
+                return this.$store.state.obj
+            }
         },
         data () {
             return {
